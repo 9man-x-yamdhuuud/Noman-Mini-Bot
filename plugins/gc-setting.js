@@ -996,4 +996,85 @@ Thanks for having me here! ❤️`);
         reply(`❌ Error: ${e.message}`);
     }
 });
+cmd({
+    pattern: "gcchatlock",
+    alias: ["gclock", "lockgc"],
+    desc: "Lock group chat (only admins can send messages)",
+    category: "group",
+    react: "🔒",
+    filename: __filename
+},
+async (conn, mek, m, {
+    from,
+    isGroup,
+    isAdmins,
+    isBotAdmins,
+    reply
+}) => {
+    try {
+
+        if (!isGroup)
+            return reply("❌ This command only works in groups.");
+
+        if (!isAdmins)
+            return reply("❌ Only group admins can use this command.");
+
+        if (!isBotAdmins)
+            return reply("❌ I need admin rights to lock the group.");
+
+        await conn.groupSettingUpdate(
+            from,
+            "announcement"
+        );
+
+        return reply(
+            "🔒 Group chat locked successfully.\n\nAb sirf admins message bhej sakte hain."
+        );
+
+    } catch (err) {
+        console.error("GC LOCK ERROR:", err);
+        reply("❌ Failed to lock group.");
+    }
+});
+
+cmd({
+    pattern: "gcchatunlock",
+    alias: ["gcunlock", "unlockgc"],
+    desc: "Unlock group chat",
+    category: "group",
+    react: "🔓",
+    filename: __filename
+},
+async (conn, mek, m, {
+    from,
+    isGroup,
+    isAdmins,
+    isBotAdmins,
+    reply
+}) => {
+    try {
+
+        if (!isGroup)
+            return reply("❌ This command only works in groups.");
+
+        if (!isAdmins)
+            return reply("❌ Only group admins can use this command.");
+
+        if (!isBotAdmins)
+            return reply("❌ I need admin rights to unlock the group.");
+
+        await conn.groupSettingUpdate(
+            from,
+            "not_announcement"
+        );
+
+        return reply(
+            "🔓 Group chat unlocked successfully.\n\nAb sab members message bhej sakte hain."
+        );
+
+    } catch (err) {
+        console.error("GC UNLOCK ERROR:", err);
+        reply("❌ Failed to unlock group.");
+    }
+});
 
