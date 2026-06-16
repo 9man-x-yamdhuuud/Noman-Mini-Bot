@@ -31,7 +31,7 @@ const vid = search.videos[0]
 /* 🎨 Preview */
 
 const caption = `
-╔ஜ۩▒█ ᴀʀꜱʟᴀɴ X ᴍᴅ █▒۩ஜ╗
+╔ஜ۩⸺‌꯭♥️⃪꯭⃜ 𓆪꯭ᜊ꯭꯭𝟵𝗠𝗔𝗡-𝗫=𝗬𝗔𝗠𝗗𝗛𝗨𝗗𝆺𝅥༎𓆪𝆺꯭꯭꯭꯭𝅥𝆬 🫀⃟‌⃟⃟🫶🏻*۩ஜ╗
 ┃🎬 VIDEO FOUND
 ┃📌 Title: ${vid.title}
 ┃⏱️ Duration: ${vid.timestamp}
