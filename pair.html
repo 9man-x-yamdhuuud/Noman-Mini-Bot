@@ -61,7 +61,7 @@
             z-index: 0;
             display: block;
             pointer-events: none;
-            /* allows clicks to pass through to the card */;
+            will-change: transform;  /* GPU hint */
         }
 
         /* card sits on top of the plexus */
@@ -453,7 +453,7 @@
     <!-- ===== CARD ===== -->
     <div class="card">
 
-        <h1 class="rgb-text">🤖9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ🤖</h1>
+        <h1 class="rgb-text">🦂9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ🐊</h1>
         <h1 class="rgb-text">PAIR CODE</h1>
 
         <p class="status rgb-text">TYPE YOUR WHATSAPP NUMBER</p>
@@ -472,16 +472,17 @@
 
         <p class="status rgb-text">WHATSAPP BOT</p>
 
-        <p class="status rgb-text">MADE BY 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ🫩</p>
+        <p class="status rgb-text">MADE BY 𝟵𝗠𝗔𝗡 𝗫 𝗬𝗔𝗠𝗗𝗛𝗨𝗗</p>
 
-        <p class="status rgb-text">9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ MINI BOT EDITION 2026</p>
+        <p class="status rgb-text">A
+            𝗡𝗢𝗠𝗔𝗡 𝗫 𝗬𝗔𝗠𝗗𝗛𝗨𝗗 MINI BOT EDITION 2026</p>
 
     </div>
 
 
     <script>
         // =====================================================
-        //  NEON PLEXUS BACKGROUND — canvas animation
+        //  NEON PLEXUS — performance‑optimized
         // =====================================================
         (function initPlexus() {
             const canvas = document.getElementById('plexusCanvas');
@@ -489,19 +490,22 @@
 
             let w, h;
             let particles = [];
-            const PARTICLE_COUNT = 160;
-            const CONNECT_DIST = 140;
-            const MAX_SPEED = 0.5;
+
+            // ─── adaptive quality ─────────────────────────────
+            const isMobile = window.innerWidth < 600;
+            const PARTICLE_COUNT = isMobile ? 70 : 100;
+            const CONNECT_DIST = isMobile ? 80 : 100;
+            const MAX_SPEED = 0.4;
 
             // colors — RGB neon palette
             const palette = [
-                { r: 255, g: 50, b: 50 }, // red
-                { r: 255, g: 140, b: 0 }, // orange
-                { r: 255, g: 255, b: 50 }, // yellow
-                { r: 50, g: 255, b: 50 }, // green
-                { r: 50, g: 255, b: 255 }, // cyan
-                { r: 80, g: 80, b: 255 }, // blue
-                { r: 200, g: 50, b: 255 }, // violet
+                { r: 255, g: 50, b: 50 },
+                { r: 255, g: 140, b: 0 },
+                { r: 255, g: 255, b: 50 },
+                { r: 50, g: 255, b: 50 },
+                { r: 50, g: 255, b: 255 },
+                { r: 80, g: 80, b: 255 },
+                { r: 200, g: 50, b: 255 },
             ];
 
             function resize() {
@@ -522,30 +526,26 @@
                     const speed = 0.2 + Math.random() * MAX_SPEED;
                     this.vx = Math.cos(angle) * speed;
                     this.vy = Math.sin(angle) * speed;
-                    // pick a random color from palette
                     const c = palette[Math.floor(Math.random() * palette.length)];
                     this.r = c.r;
                     this.g = c.g;
                     this.b = c.b;
-                    this.size = 2 + Math.random() * 2.5;
+                    this.size = 1.8 + Math.random() * 2;
                     this.pulse = Math.random() * Math.PI * 2;
-                    this.pulseSpeed = 0.02 + Math.random() * 0.03;
+                    this.pulseSpeed = 0.02 + Math.random() * 0.025;
                 }
                 update() {
                     this.x += this.vx;
                     this.y += this.vy;
                     this.pulse += this.pulseSpeed;
 
-                    // bounce off walls
                     if (this.x < 0 || this.x > w) this.vx *= -1;
                     if (this.y < 0 || this.y > h) this.vy *= -1;
-
-                    // keep inside with slight padding
                     this.x = Math.max(2, Math.min(w - 2, this.x));
                     this.y = Math.max(2, Math.min(h - 2, this.y));
 
-                    // random color shift over time (subtle)
-                    if (Math.random() < 0.001) {
+                    // occasional color shift
+                    if (Math.random() < 0.0008) {
                         const c = palette[Math.floor(Math.random() * palette.length)];
                         this.r = c.r;
                         this.g = c.g;
@@ -554,20 +554,20 @@
                 }
                 draw() {
                     const glow = 0.5 + 0.5 * Math.sin(this.pulse);
-                    const size = this.size * (0.8 + 0.4 * Math.sin(this.pulse * 0.7));
+                    const size = this.size * (0.85 + 0.3 * Math.sin(this.pulse * 0.7));
 
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${0.7 + 0.3 * glow})`;
-                    ctx.shadowColor = `rgba(${this.r},${this.g},${this.b},0.5)`;
-                    ctx.shadowBlur = 20 * glow;
+                    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${0.6 + 0.3 * glow})`;
+                    ctx.shadowColor = `rgba(${this.r},${this.g},${this.b},0.3)`;
+                    ctx.shadowBlur = 12 * glow;
                     ctx.fill();
                     ctx.shadowBlur = 0;
 
-                    // inner bright core
+                    // bright core (smaller)
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, size * 0.4, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255,255,255,${0.3 + 0.4 * glow})`;
+                    ctx.arc(this.x, this.y, size * 0.3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${0.2 + 0.3 * glow})`;
                     ctx.fill();
                 }
             }
@@ -577,21 +577,19 @@
                 particles.push(new Particle());
             }
 
-            // draw connections
+            // ─── draw connections (optimised) ─────────────────
             function drawConnections() {
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const a = particles[i];
+                const len = particles.length;
+                for (let i = 0; i < len; i++) {
+                    const a = particles[i];
+                    for (let j = i + 1; j < len; j++) {
                         const b = particles[j];
                         const dx = a.x - b.x;
                         const dy = a.y - b.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-
-                        if (dist < CONNECT_DIST) {
-                            const alpha = 1 - (dist / CONNECT_DIST);
-                            const alpha2 = alpha * alpha * 0.7;
-
-                            // blend colors between the two particles
+                        const dist = dx * dx + dy * dy;
+                        if (dist < CONNECT_DIST * CONNECT_DIST) {
+                            const alpha = 1 - Math.sqrt(dist) / CONNECT_DIST;
+                            const alpha2 = alpha * alpha * 0.6;
                             const r = (a.r + b.r) / 2;
                             const g = (a.g + b.g) / 2;
                             const b_ = (a.b + b.b) / 2;
@@ -600,9 +598,9 @@
                             ctx.moveTo(a.x, a.y);
                             ctx.lineTo(b.x, b.y);
                             ctx.strokeStyle = `rgba(${r},${g},${b_},${alpha2})`;
-                            ctx.shadowColor = `rgba(${r},${g},${b_},${alpha2 * 0.5})`;
-                            ctx.shadowBlur = 12 * alpha;
-                            ctx.lineWidth = 0.8 + 1.2 * alpha;
+                            ctx.shadowColor = `rgba(${r},${g},${b_},${alpha2 * 0.4})`;
+                            ctx.shadowBlur = 8 * alpha;
+                            ctx.lineWidth = 0.6 + 0.8 * alpha;
                             ctx.stroke();
                             ctx.shadowBlur = 0;
                         }
@@ -610,32 +608,39 @@
                 }
             }
 
-            // animation loop
-            function animate() {
-                ctx.clearRect(0, 0, w, h);
+            // ─── animation loop with frame‑rate capping ──────
+            let lastTime = 0;
+            const TARGET_FPS = 30;
+            const frameInterval = 1000 / TARGET_FPS;
 
-                // update & draw particles
-                for (const p of particles) {
-                    p.update();
-                    p.draw();
+            function animate(timestamp) {
+                const delta = timestamp - lastTime;
+                if (delta >= frameInterval) {
+                    lastTime = timestamp - (delta % frameInterval);
+
+                    ctx.clearRect(0, 0, w, h);
+
+                    // update & draw particles
+                    for (const p of particles) {
+                        p.update();
+                        p.draw();
+                    }
+
+                    drawConnections();
+
+                    // subtle edge gradient
+                    const grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.7);
+                    grad.addColorStop(0, 'rgba(0,0,0,0)');
+                    grad.addColorStop(1, 'rgba(0,0,0,0.2)');
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0, 0, w, h);
                 }
-
-                // draw connections
-                drawConnections();
-
-                // subtle gradient overlay to blend edges
-                const grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.7);
-                grad.addColorStop(0, 'rgba(0,0,0,0)');
-                grad.addColorStop(1, 'rgba(0,0,0,0.25)');
-                ctx.fillStyle = grad;
-                ctx.fillRect(0, 0, w, h);
-
                 requestAnimationFrame(animate);
             }
 
-            animate();
+            requestAnimationFrame(animate);
 
-            // reinit particles on resize
+            // resize handler
             window.addEventListener('resize', () => {
                 resize();
                 for (const p of particles) {
@@ -654,16 +659,14 @@
             const codeBox = document.getElementById("codeBox");
             const borderBox = document.getElementById("borderBox");
 
-            // Agar number khali hai
             if (!num) {
-                borderBox.style.display = "block"; // Box show karo
-                codeBox.style.letterSpacing = "normal"; // Error ke liye spacing normal
-                codeBox.style.color = "#ff4d4d"; // Error color Red
+                borderBox.style.display = "block";
+                codeBox.style.letterSpacing = "normal";
+                codeBox.style.color = "#ff4d4d";
                 codeBox.innerText = "APNA WHATSAPP NUMBER LIKHE";
                 return;
             }
 
-            // Loading State
             borderBox.style.display = "block";
             codeBox.style.letterSpacing = "normal";
             codeBox.style.color = "#fff";
@@ -674,7 +677,7 @@
                 const data = await res.json();
 
                 if (data.code) {
-                    codeBox.style.letterSpacing = "4px"; // Code ke liye spacing wapis
+                    codeBox.style.letterSpacing = "4px";
                     codeBox.style.color = "#fff";
                     codeBox.innerText = data.code;
                 } else {
@@ -704,7 +707,7 @@
         }
 
         function playSound(type) {
-            // You can add real sounds here later if you want
+            // placeholder
         }
     </script>
 
