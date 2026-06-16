@@ -12,7 +12,7 @@ const {
 } = require('@whiskeysockets/baileys');
 const { arslanmd } = require('./lib/system');
 const config = require('./config');
-const events = require('./arslan');
+const events = require('./noman');
 const { sms } = require('./lib/msg');
 const {
     connectdb,
