@@ -11,7 +11,7 @@ cmd({
   filename: __filename
 }, async (conn, mek, m, { from, reply, q }) => {
   try {
-    if (!q) return reply("*AP NE KOI APK DOWNLOAD KARNI HAI 🤔*\n*TO AP ESE LIKHO ☺️*\n\n*APK ❮APK NAME❯*\n\n*JAB AP ESE LIKHO GE 🤗 TO APKI APK DOWNLOAD KAR KE 😃 YAHA PER BHEJNDE JAYE GE 😍🌹*");
+    if (!q) return reply("*LODE TUJHA KOI APK DOWNLOAD KARNI HAI 🤔*\n*TO AP ESE LIKHO ☺️*\n\n*APK ❮APK NAME❯*\n\n*JAB AP ESE LIKHO GE 🤗 TO APKI APK DOWNLOAD KAR KE 😃 YAHA PER BHAJ DUGA OR APNE BOSS 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ KE LIYE CHUT BHI BHAJ DUGA 😑👍*");
 
     const apiUrl = `http://ws75.aptoide.com/api/7/apps/search/query=${encodeURIComponent(q)}/limit=1`;
     const { data } = await axios.get(apiUrl);
@@ -30,7 +30,7 @@ cmd({
 *┃ 👑 VER :❯ ${app.file.vername}*
 *╰━━━━━━━━━━━━━━━┈⊷*
 
-*👑 BY :❯ ARSLAN-MD 👑*`;
+*👑 BY :❯ 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ 🩷*`;
 
     await conn.sendMessage(from, { image: { url: app.icon }, caption }, { quoted: mek });
 
