@@ -23,7 +23,7 @@ cmd({
         const runtimeHours = Math.floor(runtimeMilliseconds / (1000 * 60 * 60));
 
         const formattedInfo = `
-╭┄┄┄┄[ *ᴀʀꜱʟᴀɴ-ᴍᴅ sᴛᴀᴛᴜs* ]┄┄┄┄
+╭┄┄┄┄[ *𝟵𝗠𝗔𝗡-𝗫-𝗬𝗔𝗠𝗗𝗛𝗨𝗗 sᴛᴀᴛᴜs* ]┄┄┄┄
 ┊
 ┊     Hi 🫵🏽 ${pushname}
 ┊
@@ -32,9 +32,9 @@ cmd({
 ┊⏳ *ᴜᴘᴛɪᴍᴇ*: ${runtimeHours} hours, ${runtimeMinutes} minutes, ${runtimeSeconds} seconds
 ╰───────────────
 
-> 🤖 *Status*: *Arslan-MD-Mini is Alive and Ready!*
+> 🤖 *Status*: *9man-x-yamdhud is Alive and Ready!*
 
-🎉 *Enjoy the Service!*
+🎉 *Enjoy and gand masti  the Service!*
         `.trim();
 
         // Check if the image is defined
@@ -52,7 +52,7 @@ cmd({
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: 'ᴀʀꜱʟᴀɴ-ᴍᴅ',
+                    newsletterName: '9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ',
                     serverMessageId: 143
                 }
             }
