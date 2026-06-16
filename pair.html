@@ -1,467 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>👑 Arslan MD 👑</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
-/* ===============================
-   RGB NEON RAINBOW EDITION
-   Full Replacement CSS
-=============================== */
+    <style>
+        /* ===============================
+           RGB NEON RAINBOW EDITION
+           Full Replacement CSS
+        =============================== */
 
-/* =========================
-   BLACK UI + RGB TEXT ONLY
-========================= */
+        /* =========================
+           BLACK UI + RGB TEXT ONLY
+        =============================== */
 
-:root{
-    --rgb-speed:16s;
-}
+        :root {
+            --rgb-speed: 16s;
+        }
 
-/* reset */
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+        /* reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* rainbow text animation */
-@keyframes rgbText{
-    0%{background-position:0%}
-    100%{background-position:400%}
-}
+        /* rainbow text animation */
+        @keyframes rgbText {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 400%;
+            }
+        }
 
-/* body */
-body{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Poppins',sans-serif;
-    background:#000;
-    color:#fff;
-}
+        /* body — now has the plexus canvas behind it */
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
 
-/* card */
-.card{
-    width:90%;
-    max-width:400px;
-    background:#000;
-    border-radius:22px;
-    padding:28px 22px;
-    text-align:center;
-    border:1px solid #111;
+        /* ====== NEON PLEXUS CANVAS ====== */
+        #plexusCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            display: block;
+            pointer-events: none;
+            /* allows clicks to pass through to the card */;
+        }
 
-    box-shadow:
-        0 0 20px rgba(255,255,255,0.05);
-}
+        /* card sits on top of the plexus */
+        .card {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 400px;
+            background: #000;
+            border-radius: 22px;
+            padding: 28px 22px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow:
+                0 0 40px rgba(255, 255, 255, 0.04),
+                0 0 80px rgba(255, 0, 255, 0.03);
+            backdrop-filter: blur(0px);
+        }
 
-/* RGB TEXT STYLE */
-.rgb-text{
-    background:linear-gradient(
-        90deg,
-        red,orange,yellow,green,cyan,blue,violet,red
-    );
-    background-size:400%;
-    animation:rgbText var(--rgb-speed) linear infinite;
+        /* RGB TEXT STYLE */
+        .rgb-text {
+            background: linear-gradient(90deg,
+                    red, orange, yellow, green, cyan, blue, violet, red);
+            background-size: 400%;
+            animation: rgbText var(--rgb-speed) linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        /* title */
+        h1 {
+            font-size: 1.9rem;
+            margin-bottom: 6px;
+        }
 
-/* title */
-h1{
-    font-size:1.9rem;
-    margin-bottom:6px;
-}
+        /* status */
+        .status {
+            font-size: .8rem;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
 
-/* status */
-.status{
-    font-size:.8rem;
-    letter-spacing:1px;
-    margin-bottom:22px;
-}
+        /* input wrapper */
+        .input-wrap {
+            background: #000;
+            border-radius: 14px;
+            padding: 2px;
+            margin-bottom: 16px;
+            border: 1px solid #111;
+        }
 
-/* input wrapper */
-.input-wrap{
-    background:#000;
-    border-radius:14px;
-    padding:2px;
-    margin-bottom:16px;
-    border:1px solid #111;
-}
+        /* input */
+        input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 14px;
+            border-radius: 12px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            font-size: 1rem;
+        }
 
-/* input */
-input{
-    width:100%;
-    border:none;
-    outline:none;
-    padding:14px;
-    border-radius:12px;
-    background:#000;
-    color:#fff;
-    text-align:center;
-    font-size:1rem;
-}
+        input::placeholder {
+            color: #555;
+        }
 
-input::placeholder{
-    color:#555;
-}
+        /* button */
+        button {
+            width: 100%;
+            border: 1px solid #111;
+            border-radius: 14px;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: #000;
+            color: #fff;
+            transition: .2s;
+        }
 
-/* button */
-button{
-    width:100%;
-    border:1px solid #111;
-    border-radius:14px;
-    padding:14px;
-    font-size:1rem;
-    font-weight:600;
-    cursor:pointer;
-    background:#000;
-    color:#fff;
-    transition:.2s;
-}
+        button:hover {
+            background: #111;
+        }
 
-button:hover{
-    background:#111;
-}
+        /* result */
+        #result {
+            margin-top: 20px;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
 
-/* result */
-#result{
-    margin-top:20px;
-    min-height:60px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-}
+        /* code display */
+        .code-display {
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px dashed #222;
+            letter-spacing: 4px;
+            cursor: pointer;
+            background: #000;
+        }
 
-/* code display */
-.code-display{
-    padding:10px 18px;
-    border-radius:12px;
-    border:1px dashed #222;
-    letter-spacing:4px;
-    cursor:pointer;
-    background:#000;
-}
+        /* loader */
+        .loader {
+            width: 28px;
+            height: 28px;
+            border: 3px solid #222;
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
 
-/* loader */
-.loader{
-    width:28px;
-    height:28px;
-    border:3px solid #222;
-    border-top:3px solid #fff;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-}
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
-@keyframes spin{
-    to{transform:rotate(360deg)}
-}
+        /* footer */
+        footer {
+            margin-top: 18px;
+            font-size: .7rem;
+            color: #555;
+        }
 
-/* footer */
-footer{
-    margin-top:18px;
-    font-size:.7rem;
-    color:#555;
-}
-    
-/* ===== RGB BORDER INPUT ===== */
+        /* ===== RGB BORDER INPUT ===== */
 
-@keyframes rgbMove{
-    0%{background-position:0%}
-    100%{background-position:300%}
-}
+        @keyframes rgbMove {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 300%;
+            }
+        }
 
-@keyframes rgbText{
-    0%{background-position:0%}
-    100%{background-position:400%}
-}
-/* =========================================
-   UPDATED RGB NEON RAINBOW CSS
-   ========================================= */
+        @keyframes rgbText {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 400%;
+            }
+        }
+        /* =========================================
+           UPDATED RGB NEON RAINBOW CSS
+           ========================================= */
 
-/* Input Box Container (Tight RGB Border) */
-.rgb-box {
-    padding: 2px; /* Border ki thickness */
-    border-radius: 12px;
-    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-    background-size: 300%;
-    animation: rgbMove 4s linear infinite;
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto 20px auto;
-}
+        /* Input Box Container (Tight RGB Border) */
+        .rgb-box {
+            padding: 2px;
+            /* Border ki thickness */
+            border-radius: 12px;
+            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
+            background-size: 300%;
+            animation: rgbMove 4s linear infinite;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 20px auto;
+        }
 
-/* Input Field (Pure Black Background + White Text) */
-.rgb-box input {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 14px;
-    border-radius: 11px; /* Inner radius slightly smaller than outer */
-    background: #000; /* Pure Black */
-    color: #fff; /* Typing color White */
-    text-align: center;
-    font-size: 1.1rem;
-    font-family: 'Poppins', sans-serif;
-    -webkit-text-fill-color: #fff; /* Ensure text is white */
-}
+        /* Input Field (Pure Black Background + White Text) */
+        .rgb-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 14px;
+            border-radius: 11px;
+            /* Inner radius slightly smaller than outer */
+            background: #000;
+            /* Pure Black */
+            color: #fff;
+            /* Typing color White */
+            text-align: center;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            -webkit-text-fill-color: #fff;
+            /* Ensure text is white */
+        }
 
-/* Placeholder Color */
-.rgb-box input::placeholder {
-    color: #555;
-    -webkit-text-fill-color: #555;
-}
+        /* Placeholder Color */
+        .rgb-box input::placeholder {
+            color: #555;
+            -webkit-text-fill-color: #555;
+        }
 
-/* Get Code Button (Matching Style) */
-.rgb-btn {
-    width: 100%;
-    max-width: 320px;
-    padding: 2px; /* Border space */
-    border-radius: 12px;
-    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-    background-size: 300%;
-    animation: rgbMove 4s linear infinite;
-    border: none;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: transform 0.2s;
-}
+        /* Get Code Button (Matching Style) */
+        .rgb-btn {
+            width: 100%;
+            max-width: 320px;
+            padding: 2px;
+            /* Border space */
+            border-radius: 12px;
+            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
+            background-size: 300%;
+            animation: rgbMove 4s linear infinite;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.2s;
+        }
 
-/* Inner Button Background */
-.btn-inner {
-    background: #000;
-    color: #fff;
-    display: block;
-    padding: 12px;
-    border-radius: 11px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-}
+        /* Inner Button Background */
+        .btn-inner {
+            background: #000;
+            color: #fff;
+            display: block;
+            padding: 12px;
+            border-radius: 11px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
 
-.rgb-btn:hover {
-    transform: scale(1.03);
-}
+        .rgb-btn:hover {
+            transform: scale(1.03);
+        }
 
-/* Animations */
-@keyframes rgbMove {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
-}
+        /* Animations */
+        @keyframes rgbMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 300% 50%;
+            }
+        }
 
-@keyframes rgbText {
-    0% { background-position: 0%; }
-    100% { background-position: 400%; }
-}/* Permanent Result Box with RGB Border */
-.result-box {
-    width: 100%;
-    max-width: 320px;
-    margin: 20px auto;
-    padding: 2px; /* Border ki thickness */
-    border-radius: 15px;
-    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-    background-size: 400%;
-    animation: rgbMove 5s linear infinite;
-    position: relative;
-}
+        @keyframes rgbText {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 400%;
+            }
+        }
+        /* Permanent Result Box with RGB Border */
+        .result-box {
+            width: 100%;
+            max-width: 320px;
+            margin: 20px auto;
+            padding: 2px;
+            /* Border ki thickness */
+            border-radius: 15px;
+            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
+            background-size: 400%;
+            animation: rgbMove 5s linear infinite;
+            position: relative;
+        }
 
-/* Inner Black Area */
-.result-inner {
-    background: #000;
-    border-radius: 13px;
-    padding: 15px;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center;
-}
+        /* Inner Black Area */
+        .result-inner {
+            background: #000;
+            border-radius: 13px;
+            padding: 15px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+        }
 
-/* Code Display Styling */
-#codeBox {
-    letter-spacing: 4px;
-    color: #fff;
-    cursor: pointer;
-}
+        /* Code Display Styling */
+        #codeBox {
+            letter-spacing: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
 
-@keyframes rgbMove {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
+        @keyframes rgbMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
 
-/* Base Container */
-.rgb-container {
-    padding: 5px; /* Border Thickness */
-    position: relative;
-    border-radius: 15px;
-    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red, orange, yellow);
-    background-size: 200% 100%;
-    width: 100%;
-    max-width: 320px;
-    margin: 15px auto;
-}
+        /* Base Container */
+        .rgb-container {
+            padding: 5px;
+            /* Border Thickness */
+            position: relative;
+            border-radius: 15px;
+            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red, orange, yellow);
+            background-size: 200% 100%;
+            width: 100%;
+            max-width: 320px;
+            margin: 15px auto;
+        }
 
-/* 1st & 3rd Box: Right ki taraf chalne wala */
-.move-right {
-    animation: scrollRight 3s linear infinite;
-}
+        /* 1st & 3rd Box: Right ki taraf chalne wala */
+        .move-right {
+            animation: scrollRight 3s linear infinite;
+        }
 
-/* 2nd Box: Left ki taraf chalne wala */
-.move-left {
-    animation: scrollLeft 3s linear infinite;
-}
+        /* 2nd Box: Left ki taraf chalne wala */
+        .move-left {
+            animation: scrollLeft 3s linear infinite;
+        }
 
-/* Animations Logic */
-@keyframes scrollRight {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 200% 0%; }
-}
+        /* Animations Logic */
+        @keyframes scrollRight {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 0%;
+            }
+        }
 
-@keyframes scrollLeft {
-    0% { background-position: 0% 0%; }
-    100% { background-position: -200% 0%; }
-}
+        @keyframes scrollLeft {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: -200% 0%;
+            }
+        }
 
-/* Inner Black Box */
-.inner-box {
-    background: #000 !important;
-    color: #fff !important;
-    border-radius: 11px;
-    width: 100%;
-    padding: 14px;
-    border: none;
-    outline: none;
-    text-align: center;
-    font-weight: 600;
-}
+        /* Inner Black Box */
+        .inner-box {
+            background: #000 !important;
+            color: #fff !important;
+            border-radius: 11px;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-weight: 600;
+        }
 
-/* Sabhi boxes ke liye ek hi permanent style 
+        /* Sabhi boxes ke liye ek hi permanent style */
 
+        /* Click karne par border gayab hone se bachane ke liye */
+        .rgb-container:focus-within,
+        .inner-box:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
 
+        @keyframes rgbMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
 
+        /* ===== small extra glow for card on plexus ===== */
+        .card {
+            transition: box-shadow 0.3s;
+        }
+        .card:hover {
+            box-shadow:
+                0 0 60px rgba(255, 0, 255, 0.06),
+                0 0 120px rgba(0, 255, 255, 0.04);
+        }
 
-/* Click karne par border gayab hone se bachane ke liye */
-.rgb-container:focus-within, 
-.inner-box:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(255,255,255,0.1);
-}
-
-@keyframes rgbMove {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-
-
-   
-</style>
+        /* ===== responsive tweaks ===== */
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px 14px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .rgb-container {
+                max-width: 280px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="card">
+    <!-- ===== NEON PLEXUS CANVAS ===== -->
+    <canvas id="plexusCanvas"></canvas>
 
-<h1 class="rgb-text">👑 Arslan MD 👑</h1>
-<h1 class="rgb-text">PAIR CODE</h1>
+    <!-- ===== CARD ===== -->
+    <div class="card">
 
-<p class="status rgb-text">TYPE YOUR WHATSAPP NUMBER</p>
+        <h1 class="rgb-text">🤖9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ🤖</h1>
+        <h1 class="rgb-text">PAIR CODE</h1>
 
-<div class="rgb-container move-right">
-    <input type="text" id="number" class="inner-box" placeholder="923237045919">
-</div>
+        <p class="status rgb-text">TYPE YOUR WHATSAPP NUMBER</p>
 
-<div class="rgb-container move-left">     <button class="inner-box" onclick="getCode()">GET PAIR CODE</button> </div> 
+        <div class="rgb-container move-right">
+            <input type="text" id="number" class="inner-box" placeholder="923237045919">
+        </div>
 
-<div class="rgb-container move-right" id="borderBox" style="display:none;">
-    <div class="inner-box" id="codeBox">----</div>
-</div>
+        <div class="rgb-container move-left">
+            <button class="inner-box" onclick="getCode()">GET PAIR CODE</button>
+        </div>
 
-<p class="status rgb-text">WHATSAPP BOT</p>
+        <div class="rgb-container move-right" id="borderBox" style="display:none;">
+            <div class="inner-box" id="codeBox">----</div>
+        </div>
 
-<p class="status rgb-text">MADE BY ARSLAN-MD</p>
+        <p class="status rgb-text">WHATSAPP BOT</p>
 
-<p class="status rgb-text">ARSLAN-MD MINI BOT EDITION 2026</p>
-   
-</div>
+        <p class="status rgb-text">MADE BY 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ🫩</p>
+
+        <p class="status rgb-text">9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ MINI BOT EDITION 2026</p>
+
+    </div>
 
 
-<script>
-  async function getCode() {
-    const num = document.getElementById("number").value.replace(/[^0-9]/g, '');
-    const codeBox = document.getElementById("codeBox");
-    const borderBox = document.getElementById("borderBox");
+    <script>
+        // =====================================================
+        //  NEON PLEXUS BACKGROUND — canvas animation
+        // =====================================================
+        (function initPlexus() {
+            const canvas = document.getElementById('plexusCanvas');
+            const ctx = canvas.getContext('2d');
 
-    // Agar number khali hai
-    if (!num) {
-        borderBox.style.display = "block"; // Box show karo
-        codeBox.style.letterSpacing = "normal"; // Error ke liye spacing normal
-        codeBox.style.color = "#ff4d4d"; // Error color Red
-        codeBox.innerText = "APNA WHATSAPP NUMBER LIKHE";
-        return;
-    }
+            let w, h;
+            let particles = [];
+            const PARTICLE_COUNT = 160;
+            const CONNECT_DIST = 140;
+            const MAX_SPEED = 0.5;
 
-    // Loading State
-    borderBox.style.display = "block";
-    codeBox.style.letterSpacing = "normal";
-    codeBox.style.color = "#fff"; 
-    codeBox.innerText = "CONNECTING.....";
+            // colors — RGB neon palette
+            const palette = [
+                { r: 255, g: 50, b: 50 }, // red
+                { r: 255, g: 140, b: 0 }, // orange
+                { r: 255, g: 255, b: 50 }, // yellow
+                { r: 50, g: 255, b: 50 }, // green
+                { r: 50, g: 255, b: 255 }, // cyan
+                { r: 80, g: 80, b: 255 }, // blue
+                { r: 200, g: 50, b: 255 }, // violet
+            ];
 
-    try {
-        const res = await fetch(`/code?number=${num}`);
-        const data = await res.json();
-        
-        if (data.code) {
-            codeBox.style.letterSpacing = "4px"; // Code ke liye spacing wapis
-            codeBox.style.color = "#fff"; 
-            codeBox.innerText = data.code;
-        } else {
-            codeBox.style.color = "#ff4d4d";
-            codeBox.innerText = "SERVER FULL";
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = 0.2 + Math.random() * MAX_SPEED;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed;
+                    // pick a random color from palette
+                    const c = palette[Math.floor(Math.random() * palette.length)];
+                    this.r = c.r;
+                    this.g = c.g;
+                    this.b = c.b;
+                    this.size = 2 + Math.random() * 2.5;
+                    this.pulse = Math.random() * Math.PI * 2;
+                    this.pulseSpeed = 0.02 + Math.random() * 0.03;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.pulse += this.pulseSpeed;
+
+                    // bounce off walls
+                    if (this.x < 0 || this.x > w) this.vx *= -1;
+                    if (this.y < 0 || this.y > h) this.vy *= -1;
+
+                    // keep inside with slight padding
+                    this.x = Math.max(2, Math.min(w - 2, this.x));
+                    this.y = Math.max(2, Math.min(h - 2, this.y));
+
+                    // random color shift over time (subtle)
+                    if (Math.random() < 0.001) {
+                        const c = palette[Math.floor(Math.random() * palette.length)];
+                        this.r = c.r;
+                        this.g = c.g;
+                        this.b = c.b;
+                    }
+                }
+                draw() {
+                    const glow = 0.5 + 0.5 * Math.sin(this.pulse);
+                    const size = this.size * (0.8 + 0.4 * Math.sin(this.pulse * 0.7));
+
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${0.7 + 0.3 * glow})`;
+                    ctx.shadowColor = `rgba(${this.r},${this.g},${this.b},0.5)`;
+                    ctx.shadowBlur = 20 * glow;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+
+                    // inner bright core
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, size * 0.4, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${0.3 + 0.4 * glow})`;
+                    ctx.fill();
+                }
+            }
+
+            // init particles
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                particles.push(new Particle());
+            }
+
+            // draw connections
+            function drawConnections() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const a = particles[i];
+                        const b = particles[j];
+                        const dx = a.x - b.x;
+                        const dy = a.y - b.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < CONNECT_DIST) {
+                            const alpha = 1 - (dist / CONNECT_DIST);
+                            const alpha2 = alpha * alpha * 0.7;
+
+                            // blend colors between the two particles
+                            const r = (a.r + b.r) / 2;
+                            const g = (a.g + b.g) / 2;
+                            const b_ = (a.b + b.b) / 2;
+
+                            ctx.beginPath();
+                            ctx.moveTo(a.x, a.y);
+                            ctx.lineTo(b.x, b.y);
+                            ctx.strokeStyle = `rgba(${r},${g},${b_},${alpha2})`;
+                            ctx.shadowColor = `rgba(${r},${g},${b_},${alpha2 * 0.5})`;
+                            ctx.shadowBlur = 12 * alpha;
+                            ctx.lineWidth = 0.8 + 1.2 * alpha;
+                            ctx.stroke();
+                            ctx.shadowBlur = 0;
+                        }
+                    }
+                }
+            }
+
+            // animation loop
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+
+                // update & draw particles
+                for (const p of particles) {
+                    p.update();
+                    p.draw();
+                }
+
+                // draw connections
+                drawConnections();
+
+                // subtle gradient overlay to blend edges
+                const grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.7);
+                grad.addColorStop(0, 'rgba(0,0,0,0)');
+                grad.addColorStop(1, 'rgba(0,0,0,0.25)');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, w, h);
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            // reinit particles on resize
+            window.addEventListener('resize', () => {
+                resize();
+                for (const p of particles) {
+                    p.x = Math.random() * w;
+                    p.y = Math.random() * h;
+                }
+            });
+        })();
+
+
+        // =====================================================
+        //  ORIGINAL APP LOGIC — unchanged
+        // =====================================================
+        async function getCode() {
+            const num = document.getElementById("number").value.replace(/[^0-9]/g, '');
+            const codeBox = document.getElementById("codeBox");
+            const borderBox = document.getElementById("borderBox");
+
+            // Agar number khali hai
+            if (!num) {
+                borderBox.style.display = "block"; // Box show karo
+                codeBox.style.letterSpacing = "normal"; // Error ke liye spacing normal
+                codeBox.style.color = "#ff4d4d"; // Error color Red
+                codeBox.innerText = "APNA WHATSAPP NUMBER LIKHE";
+                return;
+            }
+
+            // Loading State
+            borderBox.style.display = "block";
+            codeBox.style.letterSpacing = "normal";
+            codeBox.style.color = "#fff";
+            codeBox.innerText = "CONNECTING.....";
+
+            try {
+                const res = await fetch(`/code?number=${num}`);
+                const data = await res.json();
+
+                if (data.code) {
+                    codeBox.style.letterSpacing = "4px"; // Code ke liye spacing wapis
+                    codeBox.style.color = "#fff";
+                    codeBox.innerText = data.code;
+                } else {
+                    codeBox.style.color = "#ff4d4d";
+                    codeBox.innerText = "SERVER FULL";
+                }
+            } catch (e) {
+                codeBox.style.color = "#ff4d4d";
+                codeBox.innerText = "SERVER IS FULL";
+            }
         }
-    } catch (e) {
-        codeBox.style.color = "#ff4d4d";
-        codeBox.innerText = "SERVER IS FULL";
-    }
-}
 
-  
+        function copyCode(code) {
+            navigator.clipboard.writeText(code);
+            const display = document.querySelector('.code-display');
+            const originalText = display.innerText;
 
+            display.innerText = "COPIED";
+            display.style.borderColor = "var(--success)";
+            display.style.color = "var(--success)";
 
+            setTimeout(() => {
+                display.innerText = originalText;
+                display.style.borderColor = "var(--soft)";
+                display.style.color = "var(--soft)";
+            }, 1500);
+        }
 
-
-
-
-function copyCode(code) {
-    navigator.clipboard.writeText(code);
-    const display = document.querySelector('.code-display');
-    const originalText = display.innerText;
-
-    display.innerText = "COPIED";
-    display.style.borderColor = "var(--success)";
-    display.style.color = "var(--success)";
-
-    setTimeout(() => {
-        display.innerText = originalText;
-        display.style.borderColor = "var(--soft)";
-        display.style.color = "var(--soft)";
-    }, 1500);
-}
-
-// Optional: Simple placeholder sound function
-function playSound(type) {
-    // You can add real sounds here later if you want
-}
-</script>
+        function playSound(type) {
+            // You can add real sounds here later if you want
+        }
+    </script>
 
 </body>
 </html>
