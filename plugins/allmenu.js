@@ -25,7 +25,7 @@ cmd({
         let menuText = "";
         for (const cat in grouped) {
             menuText += `\n🧚‍♀️ *${cat.toUpperCase()}*\n`;
-            menuText += grouped[cat].map(c => `💫 ${c}`).join("\n") + "\n";
+            menuText += grouped[cat].map(c => `🐊🩵💗 ${c}`).join("\n") + "\n";
         }
 
         const time = moment().tz("Africa/Kampala").format("HH:mm:ss");
@@ -37,14 +37,14 @@ cmd({
 ┃ ✦│▸ Total Commands : *${totalCommands}*
 ┃ ✦│▸ Time           : ${time}
 ┃ ✦│▸ Date           : ${date}
-┃ ✦│▸ Platform       : arslanmd.xo.je
+┃ ✦│▸ OWNER          :  918075498750
 ┃ ✦╰─────────────┈⊷
 ╰━━━━━━━━━━━━┈⊷
 ${menuText}
 `.trim();
 
         await conn.sendMessage(m.chat, {
-            image: { url: "https://files.catbox.moe/prkkzj.png" },
+            video: { url: "https://files.catbox.moe/w6u3ux.mp4" },
             caption,
             contextInfo: {
                 forwardingScore: 999,
