@@ -32,7 +32,7 @@ cmd({
         const date = moment().tz("Africa/Kampala").format("dddd, MMMM Do YYYY");
 
         const caption = `
-╭━━━《 *ᴀʀꜱʟᴀɴ-ᴍᴅ* 》━━━┈⊷
+╭━━━《 *9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ* 》━━━┈⊷
 ┃ ✦╭─────────────┈⊷
 ┃ ✦│▸ Total Commands : *${totalCommands}*
 ┃ ✦│▸ Time           : ${time}
@@ -52,7 +52,7 @@ ${menuText}
                 mentionedJid: [m.sender],
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: "120363348739987203@newsletter",
-                    newsletterName: "𝘼𝙧𝙨𝙡𝙖𝙣-𝙈𝘿 𝙈𝙞𝙣𝙞 𝙑²",
+                    newsletterName: "𝟵𝗺𝗮𝗻-𝘅-𝘆𝗮𝗺𝗱𝗵𝘂𝗱 𝙈𝙞𝙣𝙞 𝙑²",
                     serverMessageId: 2,
                 },
             },
