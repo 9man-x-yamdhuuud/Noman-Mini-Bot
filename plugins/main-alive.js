@@ -8,7 +8,7 @@ cmd({
     alias: ["status", "live"],
     desc: "Check uptime and system status",
     category: "main",
-    react: "👑",
+    react: "🐊",
     filename: __filename
 },
 async (conn, mek, m, { from, sender, reply }) => {
@@ -25,14 +25,14 @@ async (conn, mek, m, { from, sender, reply }) => {
         const status = `
         *I AM ALIVE NOW 🤗♥️*
 *┏────〘 INFO 〙───⊷*
-*┃👑 MODE :❯ ${config.MODE || 'private'}*
-*┃👑 USER :❯ ${config.OWNER_NAME || 'ARSLAN-MD'}*
-*┃👑 PREFIX :❯ ❮ ${config.PREFIX || '.'} ❯*
-*┃👑 VERSION :❯ 1.0.0*
-*┃👑 TOTAL CMNDS :❯ ❮ ${totalCmds} ❯*
-*┃👑 UPTIME :❯ ${uptime()}*
+*┃🐊 MODE :❯ ${config.MODE || 'private'}*
+*┃🐊 USER :❯ ${config.OWNER_NAME || '9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ'}*
+*┃🐊 PREFIX :❯ ❮ ${config.PREFIX || '.'} ❯*
+*┃🐊 VERSION :❯ 1.0.0*
+*┃🐊 TOTAL CMNDS :❯ ❮ ${totalCmds} ❯*
+*┃🐊 UPTIME :❯ ${uptime()}*
 *┗──────────────⊷*
-*👑 ARSLAN-MD WHATSAPP BOT 👑*`;
+*🐊 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ WHATSAPP BOT 🐊*`;
 
         await conn.sendMessage(from, { 
             text: status,
