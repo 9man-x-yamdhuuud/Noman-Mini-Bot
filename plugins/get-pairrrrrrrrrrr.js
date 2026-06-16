@@ -5,9 +5,9 @@ cmd({
     pattern: "pair",
     alias: ["getpaijsksnsr", "pairing", "clonebnsjdndnznot"],
     react: "✅",
-    desc: "Get pairing code for ARSLAN-MD bot",
+    desc: "Get pairing code for 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ bot",
     category: "download",
-    use: ".pair 92323***",
+    use: ".pair 918075***",
     filename: __filename
 }, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, senderNumber, reply }) => {
     try {
@@ -48,9 +48,9 @@ cmd({
     pattern: "pair2",
     alias: ["getpair2", "reqpair", "clonebot2"],
     react: "📉",
-    desc: "Get pairing code for ARSLAN-MD bot",
+    desc: "Get pairing code for 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ bot",
     category: "download",
-    use: ".pair 92323XXX",
+    use: ".pair 918075XXX",
     filename: __filename
 }, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, senderNumber, reply }) => {
     try {
