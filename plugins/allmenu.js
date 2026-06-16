@@ -1,4 +1,4 @@
-const { cmd, commands } = require("../arslan");
+const { cmd, commands } = require("../noman");
 const moment = require("moment-timezone");
 const { fakevCard } = require('../lib/fakevCard');
 
