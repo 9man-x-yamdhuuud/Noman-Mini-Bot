@@ -9,7 +9,7 @@ cmd({
     react: "🛡️"
 },
 async(conn, mek, m, { args, isOwner, reply, from }) => {
-    if (!isOwner) return reply("*YEH COMMAND SIRF MERE LIE HAI 😎*");
+    if (!isOwner) return reply("* TARI MAA CHUD JAGI YEH COMMAND SIRF MERE LIE HAI 😎*");
     const mode = args[0]?.toLowerCase();
 
     if (mode === 'on' || mode === 'enable') {
