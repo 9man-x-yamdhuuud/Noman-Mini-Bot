@@ -16,9 +16,9 @@ module.exports = {
     // 2. INFORMATIONS DU BOT
     // ===========================================================
     PREFIX: process.env.PREFIX || '.',
-    OWNER_NUMBER: process.env.OWNER_NUMBER || '+923237045919', // Mettez votre numéro ici
+    OWNER_NUMBER: process.env.OWNER_NUMBER || '+918075498750', // Mettez votre numéro ici
     BOT_NAME: "Arslan MD Mini",
-    BOT_FOOTER: '© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʀꜱʟᴀɴ-ᴍᴅ',
+    BOT_FOOTER: '© ᴘᴏᴡᴇʀᴇᴅ ʙʏ 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ',
     
     // Mode de travail : public, private, group, inbox
     WORK_TYPE: process.env.WORK_TYPE || "public", 
@@ -50,7 +50,7 @@ module.exports = {
     WELCOME_IMAGE: process.env.WELCOME_IMAGE || null, 
     GOODBYE_IMAGE: process.env.GOODBYE_IMAGE || null,
     
-    GROUP_INVITE_LINK: process.env.GROUP_INVITE_LINK || 'https://chat.whatsapp.com/Jpf5TU6nrwlFcQnW86bR7f?s=cl&p=a&mlu=4&amv=3',
+    GROUP_INVITE_LINK: process.env.GROUP_INVITE_LINK || 'https://chat.whatsapp.com/DRCi30XrXKs84G519JYcSI',
     
     // ===========================================================
     // 6. SÉCURITÉ & ANTI-CALL
@@ -61,14 +61,14 @@ module.exports = {
     // ===========================================================
     // 7. IMAGES & LIENS
     // ===========================================================
-    IMAGE_PATH: 'https://files.catbox.moe/prkkzj.png',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VarfjW04tRrmwfb8x306',
+    IMAGE_PATH: 'https://files.catbox.moe/x89cc5.jpg',
+    CHANNEL_LINK: 'https://chat.whatsapp.com/DRCi30XrXKs84G519JYcSI',
     
     // ===========================================================
     // 8. EXTERNAL API (Optionnel)
     // ===========================================================
-    TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || '7214172448:AAHGqSgaw-zGVPZWvl8msDOVDhln-9kExas',
-    TELEGRAM_CHAT_ID: process.env.  TELEGRAM_CHAT_ID || '+923237045919'
+    TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || '7214172448:AAHGqSgaw-zGVPZWln-9kExas',
+    TELEGRAM_CHAT_ID: process.env.  TELEGRAM_CHAT_ID || '+918075498750'
     
 };
   
