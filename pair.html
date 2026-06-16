@@ -1,58 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
     <style>
-        /* ===============================
-           RGB NEON RAINBOW EDITION
-           Full Replacement CSS
-        =============================== */
-
-        /* =========================
-           BLACK UI + RGB TEXT ONLY
-        =============================== */
-
-        :root {
-            --rgb-speed: 16s;
-        }
-
-        /* reset */
+        /* ============================================
+           RESET & BASE
+           ============================================ */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* rainbow text animation */
-        @keyframes rgbText {
-            0% {
-                background-position: 0%;
-            }
-            100% {
-                background-position: 400%;
-            }
-        }
-
-        /* body — now has the plexus canvas behind it */
         body {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Poppins', sans-serif;
-            background: #000;
+            background: #0a0a0f;
             color: #fff;
             overflow: hidden;
             position: relative;
         }
 
-        /* ====== NEON PLEXUS CANVAS ====== */
-        #plexusCanvas {
+        /* ============================================
+           CYBER NEON MESH BACKGROUND (Canvas)
+           ============================================ */
+        #cyberMeshCanvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -61,385 +41,211 @@
             z-index: 0;
             display: block;
             pointer-events: none;
-            will-change: transform;  /* GPU hint */
+            will-change: transform;
         }
 
-        /* card sits on top of the plexus */
+        /* ============================================
+           CARD — simple, dark, subtle glow
+           ============================================ */
         .card {
             position: relative;
             z-index: 1;
             width: 90%;
             max-width: 400px;
-            background: #000;
-            border-radius: 22px;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 24px;
             padding: 28px 22px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(0, 255, 255, 0.15);
             box-shadow:
-                0 0 40px rgba(255, 255, 255, 0.04),
-                0 0 80px rgba(255, 0, 255, 0.03);
-            backdrop-filter: blur(0px);
+                0 0 40px rgba(0, 255, 255, 0.04),
+                0 0 80px rgba(0, 200, 255, 0.02);
+            transition: box-shadow 0.3s;
         }
 
-        /* RGB TEXT STYLE */
-        .rgb-text {
-            background: linear-gradient(90deg,
-                    red, orange, yellow, green, cyan, blue, violet, red);
-            background-size: 400%;
-            animation: rgbText var(--rgb-speed) linear infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .card:hover {
+            box-shadow:
+                0 0 60px rgba(0, 255, 255, 0.06),
+                0 0 120px rgba(0, 200, 255, 0.04);
         }
 
-        /* title */
-        h1 {
+        /* ============================================
+           TEXT — simple white with neon glow
+           ============================================ */
+        .title {
             font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            margin-bottom: 2px;
+        }
+
+        .sub-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
             margin-bottom: 6px;
         }
 
-        /* status */
-        .status {
-            font-size: .8rem;
+        .status-text {
+            font-size: 0.8rem;
+            font-weight: 300;
             letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 22px;
         }
 
-        /* input wrapper */
-        .input-wrap {
-            background: #000;
-            border-radius: 14px;
-            padding: 2px;
-            margin-bottom: 16px;
-            border: 1px solid #111;
+        .status-text.glow {
+            color: rgba(0, 255, 255, 0.7);
+            text-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
         }
 
-        /* input */
-        input {
-            width: 100%;
-            border: none;
-            outline: none;
-            padding: 14px;
-            border-radius: 12px;
-            background: #000;
-            color: #fff;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        input::placeholder {
-            color: #555;
-        }
-
-        /* button */
-        button {
-            width: 100%;
-            border: 1px solid #111;
-            border-radius: 14px;
-            padding: 14px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            background: #000;
-            color: #fff;
-            transition: .2s;
-        }
-
-        button:hover {
-            background: #111;
-        }
-
-        /* result */
-        #result {
-            margin-top: 20px;
-            min-height: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* code display */
-        .code-display {
-            padding: 10px 18px;
-            border-radius: 12px;
-            border: 1px dashed #222;
-            letter-spacing: 4px;
-            cursor: pointer;
-            background: #000;
-        }
-
-        /* loader */
-        .loader {
-            width: 28px;
-            height: 28px;
-            border: 3px solid #222;
-            border-top: 3px solid #fff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* footer */
-        footer {
-            margin-top: 18px;
-            font-size: .7rem;
-            color: #555;
-        }
-
-        /* ===== RGB BORDER INPUT ===== */
-
-        @keyframes rgbMove {
-            0% {
-                background-position: 0%;
-            }
-            100% {
-                background-position: 300%;
-            }
-        }
-
-        @keyframes rgbText {
-            0% {
-                background-position: 0%;
-            }
-            100% {
-                background-position: 400%;
-            }
-        }
-        /* =========================================
-           UPDATED RGB NEON RAINBOW CSS
-           ========================================= */
-
-        /* Input Box Container (Tight RGB Border) */
-        .rgb-box {
-            padding: 2px;
-            /* Border ki thickness */
-            border-radius: 12px;
-            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-            background-size: 300%;
-            animation: rgbMove 4s linear infinite;
+        /* ============================================
+           INPUT — simple neon border
+           ============================================ */
+        .input-container {
             width: 100%;
             max-width: 320px;
             margin: 0 auto 20px auto;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.6);
+            transition: border-color 0.3s;
         }
 
-        /* Input Field (Pure Black Background + White Text) */
-        .rgb-box input {
+        .input-container:focus-within {
+            border-color: rgba(0, 255, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+        }
+
+        .input-container input {
             width: 100%;
             border: none;
             outline: none;
             padding: 14px;
             border-radius: 11px;
-            /* Inner radius slightly smaller than outer */
-            background: #000;
-            /* Pure Black */
+            background: transparent;
             color: #fff;
-            /* Typing color White */
             text-align: center;
             font-size: 1.1rem;
             font-family: 'Poppins', sans-serif;
-            -webkit-text-fill-color: #fff;
-            /* Ensure text is white */
         }
 
-        /* Placeholder Color */
-        .rgb-box input::placeholder {
-            color: #555;
-            -webkit-text-fill-color: #555;
+        .input-container input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Get Code Button (Matching Style) */
-        .rgb-btn {
+        /* ============================================
+           BUTTON — simple neon border
+           ============================================ */
+        .btn-container {
             width: 100%;
             max-width: 320px;
-            padding: 2px;
-            /* Border space */
+            margin: 0 auto 15px auto;
             border-radius: 12px;
-            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-            background-size: 300%;
-            animation: rgbMove 4s linear infinite;
-            border: none;
+            border: 1px solid rgba(0, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.6);
+            transition: border-color 0.3s, transform 0.15s;
             cursor: pointer;
-            display: block;
-            margin: 0 auto;
-            transition: transform 0.2s;
         }
 
-        /* Inner Button Background */
-        .btn-inner {
-            background: #000;
-            color: #fff;
-            display: block;
-            padding: 12px;
+        .btn-container:hover {
+            border-color: rgba(0, 255, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        .btn-container button {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 14px;
             border-radius: 11px;
-            font-weight: 700;
+            background: transparent;
+            color: #fff;
             font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .rgb-btn:hover {
-            transform: scale(1.03);
-        }
-
-        /* Animations */
-        @keyframes rgbMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 300% 50%;
-            }
-        }
-
-        @keyframes rgbText {
-            0% {
-                background-position: 0%;
-            }
-            100% {
-                background-position: 400%;
-            }
-        }
-        /* Permanent Result Box with RGB Border */
-        .result-box {
+        /* ============================================
+           RESULT BOX — simple neon border
+           ============================================ */
+        .result-container {
             width: 100%;
             max-width: 320px;
-            margin: 20px auto;
-            padding: 2px;
-            /* Border ki thickness */
-            border-radius: 15px;
-            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-            background-size: 400%;
-            animation: rgbMove 5s linear infinite;
-            position: relative;
+            margin: 15px auto 0 auto;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            transition: border-color 0.3s;
         }
 
-        /* Inner Black Area */
-        .result-inner {
-            background: #000;
-            border-radius: 13px;
-            padding: 15px;
+        .result-container.visible {
+            display: block;
+        }
+
+        .result-container .result-inner {
+            padding: 14px;
+            border-radius: 11px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 4px;
             min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-align: center;
         }
 
-        /* Code Display Styling */
-        #codeBox {
-            letter-spacing: 4px;
-            color: #fff;
-            cursor: pointer;
+        .result-container .result-inner.error {
+            color: #ff4d4d;
+            letter-spacing: normal;
         }
 
-        @keyframes rgbMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
+        .result-container .result-inner.loading {
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: normal;
         }
 
-        /* Base Container */
-        .rgb-container {
-            padding: 5px;
-            /* Border Thickness */
-            position: relative;
-            border-radius: 15px;
-            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red, orange, yellow);
-            background-size: 200% 100%;
-            width: 100%;
-            max-width: 320px;
-            margin: 15px auto;
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer-text {
+            margin-top: 18px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.5px;
         }
 
-        /* 1st & 3rd Box: Right ki taraf chalne wala */
-        .move-right {
-            animation: scrollRight 3s linear infinite;
+        .footer-text .highlight {
+            color: rgba(0, 255, 255, 0.4);
         }
 
-        /* 2nd Box: Left ki taraf chalne wala */
-        .move-left {
-            animation: scrollLeft 3s linear infinite;
-        }
-
-        /* Animations Logic */
-        @keyframes scrollRight {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 200% 0%;
-            }
-        }
-
-        @keyframes scrollLeft {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: -200% 0%;
-            }
-        }
-
-        /* Inner Black Box */
-        .inner-box {
-            background: #000 !important;
-            color: #fff !important;
-            border-radius: 11px;
-            width: 100%;
-            padding: 14px;
-            border: none;
-            outline: none;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        /* Sabhi boxes ke liye ek hi permanent style */
-
-        /* Click karne par border gayab hone se bachane ke liye */
-        .rgb-container:focus-within,
-        .inner-box:focus {
-            outline: none;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-
-        @keyframes rgbMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        /* ===== small extra glow for card on plexus ===== */
-        .card {
-            transition: box-shadow 0.3s;
-        }
-        .card:hover {
-            box-shadow:
-                0 0 60px rgba(255, 0, 255, 0.06),
-                0 0 120px rgba(0, 255, 255, 0.04);
-        }
-
-        /* ===== responsive tweaks ===== */
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
         @media (max-width: 480px) {
             .card {
                 padding: 20px 14px;
             }
-            h1 {
+            .title {
                 font-size: 1.5rem;
             }
-            .rgb-container {
+            .sub-title {
+                font-size: 1.2rem;
+            }
+            .input-container,
+            .btn-container,
+            .result-container {
                 max-width: 280px;
             }
         }
@@ -447,267 +253,231 @@
 </head>
 <body>
 
-    <!-- ===== NEON PLEXUS CANVAS ===== -->
-    <canvas id="plexusCanvas"></canvas>
+    <!-- ===== CYBER NEON MESH CANVAS ===== -->
+    <canvas id="cyberMeshCanvas"></canvas>
 
     <!-- ===== CARD ===== -->
     <div class="card">
 
-        <h1 class="rgb-text">🦂9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ🐊</h1>
-        <h1 class="rgb-text">PAIR CODE</h1>
+        <div class="title">🐊𝟵𝗠𝗔𝗡-𝗫-𝗬𝗔𝗠𝗗𝗛𝗨𝗗 𝗪𝗣 𝗕𝗢𝗧</div>
+        <div class="sub-title">PAIR CODE</div>
 
-        <p class="status rgb-text">TYPE YOUR WHATSAPP NUMBER</p>
+        <div class="status-text">TYPE YOUR WHATSAPP NUMBER</div>
 
-        <div class="rgb-container move-right">
-            <input type="text" id="number" class="inner-box" placeholder="923237045919">
+        <!-- Input -->
+        <div class="input-container">
+            <input type="text" id="number" placeholder="918075498750" />
         </div>
 
-        <div class="rgb-container move-left">
-            <button class="inner-box" onclick="getCode()">GET PAIR CODE</button>
+        <!-- Button -->
+        <div class="btn-container" onclick="getCode()">
+            <button>GET PAIR CODE</button>
         </div>
 
-        <div class="rgb-container move-right" id="borderBox" style="display:none;">
-            <div class="inner-box" id="codeBox">----</div>
+        <!-- Result -->
+        <div class="result-container" id="resultContainer">
+            <div class="result-inner" id="resultInner">----</div>
         </div>
 
-        <p class="status rgb-text">WHATSAPP BOT</p>
-
-        <p class="status rgb-text">MADE BY 𝟵𝗠𝗔𝗡 𝗫 𝗬𝗔𝗠𝗗𝗛𝗨𝗗</p>
-
-        <p class="status rgb-text">A
-            𝗡𝗢𝗠𝗔𝗡 𝗫 𝗬𝗔𝗠𝗗𝗛𝗨𝗗 MINI BOT EDITION 2026</p>
+        <div class="status-text glow" style="margin-top:22px; margin-bottom:4px;">WHATSAPP BOT</div>
+        <div class="status-text" style="margin-bottom:2px;">MADE BY 9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ</div>
+        <div class="status-text" style="font-size:0.65rem; opacity:0.5;">9ᴍᴀɴ-x-ʏᴀᴍᴅʜᴜᴅ MINI BOT EDITION 2026</div>
 
     </div>
 
-
     <script>
-        // =====================================================
-        //  NEON PLEXUS — performance‑optimized
-        // =====================================================
-        (function initPlexus() {
-            const canvas = document.getElementById('plexusCanvas');
+        // ============================================================
+        //  CYBER NEON MESH WALLPAPER — grid + glowing nodes
+        //  Performance‑optimised for smooth 30fps
+        // ============================================================
+        (function initCyberMesh() {
+            const canvas = document.getElementById('cyberMeshCanvas');
             const ctx = canvas.getContext('2d');
 
             let w, h;
-            let particles = [];
-
-            // ─── adaptive quality ─────────────────────────────
+            let nodes = [];
             const isMobile = window.innerWidth < 600;
-            const PARTICLE_COUNT = isMobile ? 70 : 100;
-            const CONNECT_DIST = isMobile ? 80 : 100;
-            const MAX_SPEED = 0.4;
 
-            // colors — RGB neon palette
-            const palette = [
-                { r: 255, g: 50, b: 50 },
-                { r: 255, g: 140, b: 0 },
-                { r: 255, g: 255, b: 50 },
-                { r: 50, g: 255, b: 50 },
-                { r: 50, g: 255, b: 255 },
-                { r: 80, g: 80, b: 255 },
-                { r: 200, g: 50, b: 255 },
-            ];
+            // Grid settings
+            const GRID_SPACING = isMobile ? 60 : 80;
+            const NODE_RADIUS = isMobile ? 2.5 : 3.5;
+            const LINE_GLOW = isMobile ? 6 : 10;
+            const NODE_GLOW = isMobile ? 8 : 14;
+
+            // Neon cyan palette
+            const CYAN = { r: 0, g: 255, b: 255 };
+            const BLUE = { r: 30, g: 180, b: 255 };
+            const PURPLE = { r: 160, g: 80, b: 255 };
 
             function resize() {
                 w = canvas.width = window.innerWidth;
                 h = canvas.height = window.innerHeight;
+                buildNodes();
             }
-            window.addEventListener('resize', resize);
+
+            function buildNodes() {
+                nodes = [];
+                const cols = Math.ceil(w / GRID_SPACING) + 1;
+                const rows = Math.ceil(h / GRID_SPACING) + 1;
+                for (let row = 0; row < rows; row++) {
+                    for (let col = 0; col < cols; col++) {
+                        const x = col * GRID_SPACING + (row % 2) * (GRID_SPACING / 2);
+                        const y = row * GRID_SPACING * 0.86;
+                        if (x > w + 20 || y > h + 20) continue;
+                        nodes.push({
+                            x: x,
+                            y: y,
+                            baseX: x,
+                            baseY: y,
+                            phase: Math.random() * Math.PI * 2,
+                            speed: 0.008 + Math.random() * 0.012,
+                            amp: 2 + Math.random() * 4,
+                            // random color tint
+                            tint: Math.random() > 0.7 ? PURPLE : (Math.random() > 0.5 ? BLUE : CYAN)
+                        });
+                    }
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                resize();
+            });
             resize();
 
-            class Particle {
-                constructor() {
-                    this.reset();
-                }
-                reset() {
-                    this.x = Math.random() * w;
-                    this.y = Math.random() * h;
-                    const angle = Math.random() * Math.PI * 2;
-                    const speed = 0.2 + Math.random() * MAX_SPEED;
-                    this.vx = Math.cos(angle) * speed;
-                    this.vy = Math.sin(angle) * speed;
-                    const c = palette[Math.floor(Math.random() * palette.length)];
-                    this.r = c.r;
-                    this.g = c.g;
-                    this.b = c.b;
-                    this.size = 1.8 + Math.random() * 2;
-                    this.pulse = Math.random() * Math.PI * 2;
-                    this.pulseSpeed = 0.02 + Math.random() * 0.025;
-                }
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-                    this.pulse += this.pulseSpeed;
-
-                    if (this.x < 0 || this.x > w) this.vx *= -1;
-                    if (this.y < 0 || this.y > h) this.vy *= -1;
-                    this.x = Math.max(2, Math.min(w - 2, this.x));
-                    this.y = Math.max(2, Math.min(h - 2, this.y));
-
-                    // occasional color shift
-                    if (Math.random() < 0.0008) {
-                        const c = palette[Math.floor(Math.random() * palette.length)];
-                        this.r = c.r;
-                        this.g = c.g;
-                        this.b = c.b;
-                    }
-                }
-                draw() {
-                    const glow = 0.5 + 0.5 * Math.sin(this.pulse);
-                    const size = this.size * (0.85 + 0.3 * Math.sin(this.pulse * 0.7));
-
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${0.6 + 0.3 * glow})`;
-                    ctx.shadowColor = `rgba(${this.r},${this.g},${this.b},0.3)`;
-                    ctx.shadowBlur = 12 * glow;
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-
-                    // bright core (smaller)
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, size * 0.3, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255,255,255,${0.2 + 0.3 * glow})`;
-                    ctx.fill();
-                }
-            }
-
-            // init particles
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                particles.push(new Particle());
-            }
-
-            // ─── draw connections (optimised) ─────────────────
-            function drawConnections() {
-                const len = particles.length;
-                for (let i = 0; i < len; i++) {
-                    const a = particles[i];
-                    for (let j = i + 1; j < len; j++) {
-                        const b = particles[j];
-                        const dx = a.x - b.x;
-                        const dy = a.y - b.y;
-                        const dist = dx * dx + dy * dy;
-                        if (dist < CONNECT_DIST * CONNECT_DIST) {
-                            const alpha = 1 - Math.sqrt(dist) / CONNECT_DIST;
-                            const alpha2 = alpha * alpha * 0.6;
-                            const r = (a.r + b.r) / 2;
-                            const g = (a.g + b.g) / 2;
-                            const b_ = (a.b + b.b) / 2;
-
-                            ctx.beginPath();
-                            ctx.moveTo(a.x, a.y);
-                            ctx.lineTo(b.x, b.y);
-                            ctx.strokeStyle = `rgba(${r},${g},${b_},${alpha2})`;
-                            ctx.shadowColor = `rgba(${r},${g},${b_},${alpha2 * 0.4})`;
-                            ctx.shadowBlur = 8 * alpha;
-                            ctx.lineWidth = 0.6 + 0.8 * alpha;
-                            ctx.stroke();
-                            ctx.shadowBlur = 0;
-                        }
-                    }
-                }
-            }
-
-            // ─── animation loop with frame‑rate capping ──────
+            // ─── draw frame ──────────────────────────────────────
             let lastTime = 0;
             const TARGET_FPS = 30;
             const frameInterval = 1000 / TARGET_FPS;
 
-            function animate(timestamp) {
+            function draw(timestamp) {
                 const delta = timestamp - lastTime;
                 if (delta >= frameInterval) {
                     lastTime = timestamp - (delta % frameInterval);
 
                     ctx.clearRect(0, 0, w, h);
 
-                    // update & draw particles
-                    for (const p of particles) {
-                        p.update();
-                        p.draw();
+                    // ── update node positions (gentle wave) ──
+                    for (const n of nodes) {
+                        n.phase += n.speed;
+                        const wave = Math.sin(n.phase) * n.amp;
+                        n.x = n.baseX + wave * 0.3;
+                        n.y = n.baseY + Math.cos(n.phase * 0.7) * n.amp * 0.4;
                     }
 
-                    drawConnections();
+                    // ── draw grid lines ──────────────────────
+                    ctx.lineWidth = 0.8;
+                    for (let i = 0; i < nodes.length; i++) {
+                        const a = nodes[i];
+                        // horizontal-ish connections
+                        for (let j = i + 1; j < nodes.length; j++) {
+                            const b = nodes[j];
+                            const dx = a.x - b.x;
+                            const dy = a.y - b.y;
+                            const dist = dx * dx + dy * dy;
+                            const maxDist = (GRID_SPACING * 1.5) ** 2;
+                            if (dist < maxDist && dist > 0) {
+                                const alpha = 1 - Math.sqrt(dist) / (GRID_SPACING * 1.5);
+                                const alpha2 = alpha * alpha * 0.45;
+                                // blend colors
+                                const r = (a.tint.r + b.tint.r) / 2;
+                                const g = (a.tint.g + b.tint.g) / 2;
+                                const b_ = (a.tint.b + b.tint.b) / 2;
+                                ctx.beginPath();
+                                ctx.moveTo(a.x, a.y);
+                                ctx.lineTo(b.x, b.y);
+                                ctx.strokeStyle = `rgba(${r},${g},${b_},${alpha2})`;
+                                ctx.shadowColor = `rgba(${r},${g},${b_},${alpha2 * 0.3})`;
+                                ctx.shadowBlur = LINE_GLOW * alpha;
+                                ctx.stroke();
+                                ctx.shadowBlur = 0;
+                            }
+                        }
+                    }
 
-                    // subtle edge gradient
-                    const grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.7);
+                    // ── draw nodes ──────────────────────────
+                    for (const n of nodes) {
+                        const pulse = 0.6 + 0.4 * Math.sin(n.phase * 1.3);
+                        const r = n.tint.r;
+                        const g = n.tint.g;
+                        const b_ = n.tint.b;
+
+                        // glow
+                        ctx.shadowColor = `rgba(${r},${g},${b_},0.5)`;
+                        ctx.shadowBlur = NODE_GLOW * pulse;
+
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, NODE_RADIUS * (0.7 + 0.4 * pulse), 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(${r},${g},${b_},${0.5 + 0.4 * pulse})`;
+                        ctx.fill();
+
+                        // inner bright core
+                        ctx.shadowBlur = 0;
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, NODE_RADIUS * 0.35, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(255,255,255,${0.2 + 0.3 * pulse})`;
+                        ctx.fill();
+                    }
+
+                    // subtle vignette
+                    const grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.65);
                     grad.addColorStop(0, 'rgba(0,0,0,0)');
-                    grad.addColorStop(1, 'rgba(0,0,0,0.2)');
+                    grad.addColorStop(1, 'rgba(0,0,0,0.4)');
                     ctx.fillStyle = grad;
                     ctx.fillRect(0, 0, w, h);
                 }
-                requestAnimationFrame(animate);
+                requestAnimationFrame(draw);
             }
 
-            requestAnimationFrame(animate);
-
-            // resize handler
-            window.addEventListener('resize', () => {
-                resize();
-                for (const p of particles) {
-                    p.x = Math.random() * w;
-                    p.y = Math.random() * h;
-                }
-            });
+            requestAnimationFrame(draw);
         })();
 
 
-        // =====================================================
-        //  ORIGINAL APP LOGIC — unchanged
-        // =====================================================
+        // ============================================================
+        //  APP LOGIC — unchanged (but simplified result display)
+        // ============================================================
         async function getCode() {
-            const num = document.getElementById("number").value.replace(/[^0-9]/g, '');
-            const codeBox = document.getElementById("codeBox");
-            const borderBox = document.getElementById("borderBox");
+            const num = document.getElementById('number').value.replace(/[^0-9]/g, '');
+            const container = document.getElementById('resultContainer');
+            const inner = document.getElementById('resultInner');
 
+            // hide if empty
             if (!num) {
-                borderBox.style.display = "block";
-                codeBox.style.letterSpacing = "normal";
-                codeBox.style.color = "#ff4d4d";
-                codeBox.innerText = "APNA WHATSAPP NUMBER LIKHE";
+                container.classList.add('visible');
+                inner.className = 'result-inner error';
+                inner.style.letterSpacing = 'normal';
+                inner.innerText = 'APNA WHATSAPP NUMBER LIKHE';
                 return;
             }
 
-            borderBox.style.display = "block";
-            codeBox.style.letterSpacing = "normal";
-            codeBox.style.color = "#fff";
-            codeBox.innerText = "CONNECTING.....";
+            // loading state
+            container.classList.add('visible');
+            inner.className = 'result-inner loading';
+            inner.style.letterSpacing = 'normal';
+            inner.innerText = 'CONNECTING.....';
 
             try {
                 const res = await fetch(`/code?number=${num}`);
                 const data = await res.json();
 
                 if (data.code) {
-                    codeBox.style.letterSpacing = "4px";
-                    codeBox.style.color = "#fff";
-                    codeBox.innerText = data.code;
+                    inner.className = 'result-inner';
+                    inner.style.letterSpacing = '4px';
+                    inner.innerText = data.code;
                 } else {
-                    codeBox.style.color = "#ff4d4d";
-                    codeBox.innerText = "SERVER FULL";
+                    inner.className = 'result-inner error';
+                    inner.style.letterSpacing = 'normal';
+                    inner.innerText = 'SERVER FULL';
                 }
             } catch (e) {
-                codeBox.style.color = "#ff4d4d";
-                codeBox.innerText = "SERVER IS FULL";
+                inner.className = 'result-inner error';
+                inner.style.letterSpacing = 'normal';
+                inner.innerText = 'SERVER IS FULL';
             }
         }
 
+        // optional copy helper (kept for compatibility)
         function copyCode(code) {
             navigator.clipboard.writeText(code);
-            const display = document.querySelector('.code-display');
-            const originalText = display.innerText;
-
-            display.innerText = "COPIED";
-            display.style.borderColor = "var(--success)";
-            display.style.color = "var(--success)";
-
-            setTimeout(() => {
-                display.innerText = originalText;
-                display.style.borderColor = "var(--soft)";
-                display.style.color = "var(--soft)";
-            }, 1500);
-        }
-
-        function playSound(type) {
-            // placeholder
         }
     </script>
 
